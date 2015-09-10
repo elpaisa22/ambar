@@ -1,0 +1,27 @@
+<navigationManager xmlns="http://www.ambar.org/navigation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.ambar.org/navigation NavigationManager.xsd">
+
+	<entitiesInformation>
+		<entity id="Cliente" image-big="assets/icons/user.png"
+			image-small="assets/icons/user.png" service="IClienteService" crud="ABMCliente">
+			<subentity id="Venta" text="Ventas" filterCondition="VENTAS.IdCliente = :idCliente" />
+		</entity>
+		<entity id="Venta" image-big="assets/icons/page.png"
+			image-small="assets/icons/page.png" service="IVentaService" crud="ABMVenta">
+			<subentity id="Pago" text="Mis Pagos" filterCondition="PAGO.idVenta = :idVenta" />
+			<subentity id="Deuda" text="Mis Deudas" filterCondition="DEUDA.idVenta = :idVenta" />
+		</entity>
+		<entity id="Pago" image-big="assets/icons/bell.png"
+			image-small="assets/icons/bell.png" service="IVentaService" crud="ABMVenta" />
+		<entity id="Deuda" image-big="assets/icons/money.png"
+			image-small="assets/icons/money.png" service="IVentaService" crud="ABMVenta" />
+	</entitiesInformation>
+
+	<navigation>
+		<module id="Principal" text="Modulo de Clientes" icon="assets/icons/user.png">
+			<item entity="Cliente" text="Mis Clientes" />
+			<item entity="Venta" text="Mis Ventas" />
+		</module>
+	</navigation>
+</navigationManager>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema 
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:ambar="http://www.ambar.org/entities"
+	targetNamespace="http://www.ambar.org/entities">
+	
+	<xsd:import namespace="http://www.w3.org/XML/1998/namespace"
+        schemaLocation="http://www.w3.org/2001/xml.xsd" />
+        
+	<xsd:annotation>
+		<xsd:documentation>
+			Formato del documento que especifica la metadata de entidades.
+		</xsd:documentation>
+	</xsd:annotation>
+	<xsd:element name="entities">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="entity" type="ambar:Entity"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:complexType name="Entity">
+		<xsd:sequence>
+			<xsd:element name="attribute" type="ambar:Attribute" maxOccurs="unbounded"/>
+		</xsd:sequence>
+		<xsd:attribute name="id" type="xsd:string"/>
+	</xsd:complexType>
+	<xsd:complexType name="Attribute">
+		<xsd:attribute name="id" type="xsd:string"/>
+		<xsd:attribute name="visibleName" type="xsd:string"/>
+		<xsd:attribute name="fieldType" type="ambar:FieldType"/>
+		<xsd:attribute name="dataType" type="ambar:DataType"/>
+		<xsd:attribute name="width" type="xsd:int"/>
+		<xsd:attribute name="order" type="xsd:int"/>
+		<xsd:attribute name="mask" type="xsd:string"/>
+		<xsd:attribute name="visible" type="xsd:boolean"/>
+		<xsd:attribute name="searchEnabled" type="xsd:boolean"/>
+	</xsd:complexType>
+	<xsd:simpleType name="DataType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="String"/>
+			<xsd:enumeration value="Number"/>
+			<xsd:enumeration value="DateTime"/>
+			<xsd:enumeration value="Boolean"/>
+			<xsd:enumeration value="Object"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="FieldType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="field"/>
+			<xsd:enumeration value="primary-key"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+</xsd:schema>

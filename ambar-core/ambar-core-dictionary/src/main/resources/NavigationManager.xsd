@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema 
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:ambar="http://www.ambar.org/navigation"
+	targetNamespace="http://www.ambar.org/navigation">
+	
+	<xsd:import namespace="http://www.w3.org/XML/1998/namespace"
+        schemaLocation="http://www.w3.org/2001/xml.xsd" />
+
+	<xsd:annotation>
+		<xsd:documentation>
+		   Formato del documento que especifica la metadata de la navegacion de entidades.
+		</xsd:documentation>
+	</xsd:annotation>
+	
+	<xsd:element name="navigationManager">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="entitiesInformation" type="ambar:EntitiesInformation"/>
+				<xsd:element name="navigation" type="ambar:Navigation"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:complexType name="EntitiesInformation">
+		<xsd:sequence>
+			<xsd:element name="entity" type="ambar:Entity" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="Entity">
+		<xsd:sequence>
+			<xsd:element name="subentity" type="ambar:SubEntity" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+		<xsd:attribute name="id" type="xsd:string"/>
+		<xsd:attribute name="service" type="xsd:string"/>
+		<xsd:attribute name="crud" type="xsd:string"/>
+		<xsd:attribute name="image-small" type="xsd:string"/>
+		<xsd:attribute name="image-big" type="xsd:string"/>
+	</xsd:complexType>
+
+	<xsd:complexType name="SubEntity">
+		<xsd:attribute name="id" type="xsd:string"/>
+		<xsd:attribute name="text" type="xsd:string"/>
+		<xsd:attribute name="filterCondition" type="xsd:string"/>
+	</xsd:complexType>
+
+	<xsd:complexType name="Navigation">
+		<xsd:sequence>
+			<xsd:element name="module" type="ambar:Module" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="Module">
+		<xsd:sequence>
+			<xsd:element name="item" type="ambar:Item" maxOccurs="unbounded"/>
+		</xsd:sequence>
+		<xsd:attribute name="id" type="xsd:string"/>
+		<xsd:attribute name="text" type="xsd:string"/>
+		<xsd:attribute name="icon" type="xsd:string"/>
+	</xsd:complexType>
+
+	<xsd:complexType name="Item">
+		<xsd:attribute name="entity" type="xsd:string"/>
+		<xsd:attribute name="text" type="xsd:string"/>
+	</xsd:complexType>
+
+</xsd:schema>

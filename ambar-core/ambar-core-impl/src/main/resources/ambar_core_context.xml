@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans  xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:p="http://www.springframework.org/schema/p"
+        xmlns:aop="http://www.springframework.org/schema/aop"
+        xsi:schemaLocation="
+	http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/aop
+    http://www.springframework.org/schema/aop/spring-aop-3.0.xsd"
+	default-lazy-init="true">
+
+	<!-- cross services -->
+	<bean id="serviceLocator" class="org.ambar.core.commons.servicelocator.impl.ServiceLocatorImpl"/>
+
+	<!-- Configuración de los DAOs -->
+	<bean id="parentDAO" class="org.ambar.core.dao.impl.CrudDAOImpl" abstract="true"/>
+
+	<!-- Configuración de BusinessObjects -->
+	<bean id="parentBO" class="org.ambar.core.bo.impl.CrudBusinessObjectImpl" init-method="init" abstract="true">
+		<property name="messageService" ref="messagesService"/>
+		<property name="serviceLocator" ref="serviceLocator"/>
+		<property name="dao" ref="dao"/>
+	</bean>
+
+	<!-- Configuración para mappers -->
+    <bean id="unmarshaller" class="org.springframework.oxm.jaxb.Jaxb2Marshaller">
+        <property name="classesToBeBound">
+            <list>
+                <value>org.ambar.core.commons.mapping.domain.Field</value>
+                <value>org.ambar.core.commons.mapping.domain.FieldExclude</value>
+                <value>org.ambar.core.commons.mapping.domain.Mapping</value>
+                <value>org.ambar.core.commons.mapping.domain.Configuration</value>
+                <value>org.ambar.core.commons.mapping.domain.Mappings</value>
+            </list>
+        </property>
+        <property name="schema" value="classpath:mapping.xsd"/>
+    </bean>
+
+	<bean id="mappingConfigurationFactory" class="org.ambar.core.commons.mapping.configuration.ConfigurationBuilder" init-method="init">
+		<property name="mappingFiles" value="classpath*:mapping-configuration.xml"/>
+		<property name="unMarshaller" ref="unmarshaller"/>
+	</bean>
+
+	<bean id="mappingHelper" class="org.ambar.core.commons.mapping.helpers.impl.MappingHelperImpl">
+		<property name="mappingConfiguration" ref="mappingConfiguration"/>
+	</bean>
+
+	<bean id="enumDozerConverter" class="org.ambar.core.enums.converters.dozer.EnumDozerConverter">
+	</bean>
+
+	<bean id="enumDescDozerConverter" class="org.ambar.core.enums.converters.dozer.EnumDescDozerConverter">
+	</bean>
+
+	<bean id="dozerBeanMapper" class="org.dozer.DozerBeanMapper" scope="singleton"
+			factory-bean="mappingConfigurationFactory" factory-method="dozerMapperFactory">
+		<property name="customConvertersWithId">
+	          <map>
+	             	<entry key="enumDozerConverter" value-ref="enumDozerConverter"/>
+	             	<entry key="enumDozerDescConverter" value-ref="enumDescDozerConverter"/>
+	          </map>
+	    </property>
+	</bean>
+
+	<bean id="mappingConfiguration" class="org.ambar.core.commons.mapping.configuration.impl.MappingConfigurationImpl"
+			factory-bean="mappingConfigurationFactory" factory-method="mappingConfigurationFactory"/>
+
+	<bean id="parentMapper" class="org.ambar.core.mappers.EntityMapperImpl" abstract="true">
+		<property name="mapper" ref="dozerBeanMapper"/>
+		<property name="mappingHelper" ref="mappingHelper"/>
+	</bean>
+
+    <bean id="expressionBuilder" class="org.ambar.core.commons.filters.helpers.impl.FilterExpressionBuilderImpl" scope="prototype"/>
+
+	<!-- Configuración para services -->
+	<bean id="parentServices" class="org.ambar.core.services.impl.CrudServiceDefaultImpl" abstract="true">
+		<property name="messageService" ref="messagesService"/>
+		<property name="businessObject" ref="businessObject"/>
+		<property name="entityMapper" ref="mapper"/>
+        <property name="mappingConfiguration" ref="mappingConfiguration"/>
+        <property name="serviceLocator" ref="serviceLocator"/>
+        <property name="expressionBuilderBeanName" value="expressionBuilder"/>
+	</bean>
+
+	<!-- Aspects -->
+	<bean id="trackingInfoServicesAspect" class="org.ambar.core.services.aspects.TrackingServicesAspect"/>
+	<bean id="trackingInfoDaoAspect" class="org.ambar.core.dao.aspects.TrackingDAOAspect"/>
+
+	<aop:config>
+
+	  <!-- Configuracion de AOP para cargar la informacion de Tracking en los Servicios -->
+	  <aop:aspect id="aspectServicesTracking" ref="trackingInfoServicesAspect" >
+	     <!-- @Before Services-->
+	     <aop:pointcut id="pointCutServiceBeforeInsert" expression="execution(* org.ambar.core.services.impl.CrudServiceDefaultImpl.insert(..)) &amp;&amp; args(pEntity, pRequestContext, ..)" />
+	     <aop:before method="trackingInfoBeforeInsert" pointcut-ref="pointCutServiceBeforeInsert" />
+	     <aop:pointcut id="pointCutServiceBeforeUpdate" expression="execution(* org.ambar.core.services.impl.CrudServiceDefaultImpl.update(..)) &amp;&amp; args(pEntity, pRequestContext, ..)" />
+	     <aop:before method="trackingInfoBeforeUpdate" pointcut-ref="pointCutServiceBeforeUpdate" />
+	  </aop:aspect>
+
+	  <!-- Configuracion de AOP para cargar la informacion de Tracking en los DAO -->
+	  <aop:aspect id="aspectDAOTracking" ref="trackingInfoDaoAspect" >
+	     <!-- @Before Dao-->
+	     <aop:pointcut id="pointCutDaoBefore" expression="execution(* org.ambar.core.dao.impl.CrudDAOImpl.insert(..)) &amp;&amp; args(pEntity, ..)" />
+	     <aop:before method="trackingInfoInsertBefore" pointcut-ref="pointCutDaoBefore" />
+	  </aop:aspect>
+
+	</aop:config>
+
+</beans>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><templates><template autoinsert="true" context="delegatecomment_context" deleted="false" description="Comentario para métodos delegados" enabled="true" id="org.eclipse.jdt.ui.text.codetemplates.delegatecomment" name="delegatecomment">/**
+ * ${tags}
+ * ${see_to_target}
+ */</template><template autoinsert="false" context="fieldcomment_context" deleted="false" description="Comentario para campos" enabled="true" id="org.eclipse.jdt.ui.text.codetemplates.fieldcomment" name="fieldcomment"/><template autoinsert="false" context="typecomment_context" deleted="false" description="Comentario para tipos creados" enabled="true" id="org.eclipse.jdt.ui.text.codetemplates.typecomment" name="typecomment">/**
+ * &lt;p&gt;Insertar descripción funcional.&lt;/p&gt;
+ * @author ${user}
+ * @see &lt;&lt;Insertar clases relacionadas&gt;&gt;
+ */</template><template autoinsert="true" context="methodcomment_context" deleted="false" description="Comment for non-overriding methods" enabled="true" id="org.eclipse.jdt.ui.text.codetemplates.methodcomment" name="methodcomment">/**
+ * ${todo} Insertar descripción funcional 
+ * ${tags}
+ */</template><template autoinsert="true" context="settercomment_context" deleted="false" description="Comentario para método de establecimiento" enabled="true" id="org.eclipse.jdt.ui.text.codetemplates.settercomment" name="settercomment">/**
+ * @param ${param} Establece el valor del atributo ${field}.
+ */</template><template autoinsert="false" context="filecomment_context" deleted="false" description="Comentario para archivos Java creados" enabled="true" id="org.eclipse.jdt.ui.text.codetemplates.filecomment" name="filecomment">/**
+ * ${project_name} [${date} ${time}]
+ */</template><template autoinsert="false" context="overridecomment_context" deleted="false" description="Comentario para métodos que alteran temporalmente" enabled="true" id="org.eclipse.jdt.ui.text.codetemplates.overridecomment" name="overridecomment">/* (non-JSDoc)
+ * ${see_to_overridden}
+ */</template><template autoinsert="true" context="constructorcomment_context" deleted="false" description="Comment for created constructors" enabled="true" id="org.eclipse.jdt.ui.text.codetemplates.constructorcomment" name="constructorcomment">/**
+ * ${tags}
+ */</template><template autoinsert="true" context="gettercomment_context" deleted="false" description="Comentario para método de obtención" enabled="true" id="org.eclipse.jdt.ui.text.codetemplates.gettercomment" name="gettercomment">/**
+ * @return Retorna el valor del atributo ${bare_field_name}.
+ */</template></templates>

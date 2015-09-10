@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<faces-config version="2.2"
+    xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
+
+	<component>
+	   	<component-type>org.ambar.core.faces.components.NavigationBar</component-type>
+	   	<component-class>org.ambar.core.faces.components.NavigationBar</component-class>
+  	</component>
+
+  	<component>
+	   	<component-type>org.ambar.core.faces.components.CustomMenuEntity</component-type>
+	   	<component-class>org.ambar.core.faces.components.CustomMenuEntity</component-class>
+  	</component>
+
+  	<component>
+  		<component-type>org.ambar.core.faces.converters.CustomDateTimeConverter</component-type>
+  		<component-class>org.ambar.core.faces.converters.CustomDateTimeConverter</component-class>
+  	</component>
+
+  	<component>
+	   	<component-type>org.ambar.component.Datepicker</component-type>
+	   	<component-class>org.ambar.core.faces.components.Datepicker</component-class>
+  	</component>
+
+  	<component>
+		<component-type>org.ambar.core.faces.components.Paginator</component-type>
+		<component-class>org.ambar.core.faces.components.Paginator</component-class>
+	</component>
+
+  	<converter>
+  		<description>Converter de montos de dinero</description>
+        <converter-id>moneyConverter</converter-id>
+        <converter-class>org.ambar.core.faces.converters.CustomMoneyConverter</converter-class>
+  	</converter>
+
+  	<converter>
+  		<description>Converter de ID de facturas</description>
+        <converter-id>idFacturaConverter</converter-id>
+        <converter-class>org.ambar.core.faces.converters.CustomIDFacturaConverter</converter-class>
+  	</converter>
+
+  	<render-kit>
+		<renderer>
+			<component-family>org.ambar.component</component-family>
+			<renderer-type>org.ambar.renderer.DatepickerRenderer</renderer-type>
+			<renderer-class>org.ambar.core.faces.renderers.DatepickerRenderer</renderer-class>
+		</renderer>
+		<renderer>
+			<component-family>org.ambar.component</component-family>
+			<renderer-type>org.ambar.renderer.PaginatorRenderer</renderer-type>
+			<renderer-class>org.ambar.core.faces.renderers.PaginatorRenderer</renderer-class>
+		</renderer>
+	</render-kit>
+
+</faces-config>

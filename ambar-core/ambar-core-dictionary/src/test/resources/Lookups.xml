@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<lookups>
+	<lookup id="lkp_cliente" title="Clientes" resultAttribute="id" descriptionAttribute="razonSocial" defaultService="clienteServices">
+		<attribute name="id" description="ID Cliente" dataType="Number"/>
+		<attribute name="razonSocial" description="Razon Social" dataType="String"/>
+	</lookup>
+</lookups>

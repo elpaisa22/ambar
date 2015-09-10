@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ambar:mappings xmlns:ambar="http://www.ambar.org/mapper"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.ambar.org/mapper http://www.ambar.org/mapper">
+
+	<ambar:mapping map-empty-string="false" trim-strings="true" wildcard="true" stop-on-errors="true" map-null="false">
+		<ambar:class-a map-null="false">org.ambar.core.be.TrackInfo</ambar:class-a>
+		<ambar:class-b map-null="false">org.ambar.core.dto.TrackInfoDTO</ambar:class-b>
+		<ambar:field custom-converter="org.ambar.core.commons.converters.EstadoTrackingString">
+			<ambar:a>estado</ambar:a>
+			<ambar:b>estado</ambar:b>
+		</ambar:field>
+	</ambar:mapping>
+
+</ambar:mappings>

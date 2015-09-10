@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<entities xmlns="http://www.ambar.org/entities" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.ambar.org/entities EntitiesMetaData.xsd">
+
+	<entity id="Cliente">
+		<attribute id="id" visibleName="Nro. Cliente" order="1"
+			fieldType="primary-key" visible="true" width="150" mask="" dataType="Number" />
+		<attribute id="razonsocial" visibleName="Nombre Cliente"
+			order="2" fieldType="field" dataType="String" width="200" />
+		<attribute id="numeroDocumento" visibleName="DNI" order="3"
+			dataType="String" width="200" fieldType="field" visible="false" />
+	</entity>
+</entities>
+

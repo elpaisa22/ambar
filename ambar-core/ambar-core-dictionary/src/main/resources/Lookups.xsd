@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema 
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:ambar="http://www.ambar.org/lookups"
+	targetNamespace="http://www.ambar.org/lookups">
+	
+	<xsd:import namespace="http://www.w3.org/XML/1998/namespace"
+        schemaLocation="http://www.w3.org/2001/xml.xsd" />
+        
+	<xsd:annotation>
+		<xsd:documentation>
+			Formato del documento que especifica la metadata de lookups.
+		</xsd:documentation>
+	</xsd:annotation>
+	<xsd:element name="lookups">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="lookup" type="ambar:Lookup"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:complexType name="Lookup">
+		<xsd:sequence>
+			<xsd:element name="attribute" type="ambar:Attribute" maxOccurs="unbounded"/>
+		</xsd:sequence>
+		<xsd:attribute name="id" type="xsd:string"/>
+		<xsd:attribute name="title" type="xsd:string"/>
+		<xsd:attribute name="resultAttribute" type="xsd:string"/>
+		<xsd:attribute name="descriptionAttribute" type="xsd:string"/>
+		<xsd:attribute name="defaultService" type="xsd:string"/>
+	</xsd:complexType>
+	<xsd:simpleType name="DataType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="String"/>
+			<xsd:enumeration value="Number"/>
+			<xsd:enumeration value="DateTime"/>
+			<xsd:enumeration value="Boolean"/>
+			<xsd:enumeration value="Object"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:complexType name="Attribute">
+		<xsd:attribute name="name" type="xsd:string"/>
+		<xsd:attribute name="description" type="xsd:string"/>
+		<xsd:attribute name="tipo" type="xsd:string"/>
+		<xsd:attribute name="visible" type="xsd:string"/>
+	</xsd:complexType>
+</xsd:schema>

@@ -1,0 +1,38 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<artifactId>ambar-core</artifactId>
+		<groupId>org.ambar.core</groupId>
+		<version>0.5.0-SNAPSHOT</version>
+	</parent>
+
+	<artifactId>ambar-core-fxcontrols</artifactId>
+	<name>Controles Custom de JavaFX</name>
+	<url>http://maven.apache.org</url>
+  
+  
+	<dependencies>
+		<dependency>
+			<groupId>org.ambar.core</groupId>
+			<artifactId>ambar-core-dictionary</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jfxtras</groupId>
+			<artifactId>jfxtras-labs</artifactId>
+			<version>8.0-r1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.controlsfx</groupId>
+			<artifactId>controlsfx</artifactId>
+			<version>8.20.8</version>
+		</dependency>
+		<dependency>
+			<groupId>com.jidesoft</groupId>
+			<artifactId>jidefx-fields</artifactId>
+			<version>0.9.1</version>
+		</dependency>
+	</dependencies>
+</project>

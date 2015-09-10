@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<facelet-taglib version="2.2"
+    xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facelettaglibrary_2_2.xsd">
+
+	<namespace>http://ambar.org/facelets</namespace>
+
+
+	<tag>
+		<tag-name>navigationBar</tag-name>
+		<component>
+			<component-type>org.ambar.core.faces.components.NavigationBar</component-type>
+		</component>
+		<attribute>
+			<description>Nombre</description>
+			<name>nombre</name>
+			<required>false</required>
+		</attribute>
+	</tag>
+
+	<tag>
+		<tag-name>customMenuEntity</tag-name>
+		<component>
+			<component-type>org.ambar.core.faces.components.CustomMenuEntity</component-type>
+		</component>
+		<attribute>
+			<description>Valor</description>
+			<name>value</name>
+			<required>true</required>
+		</attribute>
+	</tag>
+	
+	<tag>
+		<tag-name>datepicker</tag-name>
+		<component>
+			<component-type>org.ambar.component.Datepicker</component-type>
+		</component>
+		<attribute>
+			<description>Idioma del componente</description>
+			<name>language</name>
+			<required>false</required>
+		</attribute>
+		<attribute>
+			<description>Formato de la fecha</description>
+			<name>format</name>
+			<required>false</required>
+		</attribute>
+	</tag>
+	
+		<tag>
+		<tag-name>paginator</tag-name>
+		<component>
+			<component-type>org.ambar.core.faces.components.Paginator</component-type>
+		</component>
+		<attribute>
+			<description>total</description>
+			<name>total</name>
+			<required>true</required>
+		</attribute>
+		<attribute>
+			<description>rowsxpage</description>
+			<name>rowsxpage</name>
+			<required>true</required>
+		</attribute>
+		<attribute>
+			<description>actualPage</description>
+			<name>actualPage</name>
+			<required>false</required>
+		</attribute>
+		<attribute>
+			<description>relatedBean</description>
+			<name>relatedBean</name>
+			<required>false</required>
+		</attribute>
+		<attribute>
+			<description>handler</description>
+			<name>handler</name>
+			<required>false</required>
+		</attribute>
+	</tag>
+
+</facelet-taglib>

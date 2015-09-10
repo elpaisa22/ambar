@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+      xmlns:p="http://www.springframework.org/schema/p" xmlns:tx="http://www.springframework.org/schema/tx"
+      xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+            http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
+
+	<bean id="menuLoader" class="org.ambar.core.views.main.components.menu.MenuLoaderImpl">
+	    <property name="dictionaryServices" ref="dictionaryServices"/>
+	    <property name="navigationManager" ref="navigationManager"/>
+	</bean>
+
+	<bean id="gridLoader" class="org.ambar.core.views.main.components.grid.GridLoaderImpl">
+	    <property name="dictionaryServices" ref="dictionaryServices"/>
+	    <property name="navigationManager" ref="navigationManager"/>
+	</bean>
+
+	<bean id="treeLoader" class="org.ambar.core.views.main.components.tree.TreeLoaderImpl">
+	    <property name="dictionaryServices" ref="dictionaryServices"/>
+	    <property name="navigationManager" ref="navigationManager"/>
+	</bean>
+
+	<bean id="navigationManager" class="org.ambar.core.views.main.navigation.NavigationManagerImpl">
+	    <property name="gridLoader" ref="gridLoader"/>
+	   	<property name="menuLoader" ref="menuLoader"/>
+	   	<property name="treeLoader" ref="treeLoader"/>
+	   	<property name="dictionaryServices" ref="dictionaryServices"/>
+	</bean>
+
+	<bean id="treeListener" class="org.ambar.core.views.main.components.tree.RelationItemTreeListener"/>
+
+	<bean id="parentABM" class="org.ambar.core.views.crud.impl.AbstractABMImpl" init-method="init" abstract="true">
+    	<property name="requestContext" ref="requestContext"/>
+    </bean>
+
+</beans>
