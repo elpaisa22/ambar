@@ -1,10 +1,6 @@
 package org.ambar.core.enums.converters.dozer;
 
-import java.lang.reflect.InvocationTargetException;
-
 import org.apache.commons.beanutils.BeanUtils;
-import org.apache.commons.beanutils.PropertyUtils;
-import org.apache.commons.beanutils.PropertyUtilsBean;
 
 /**
  * <p>
