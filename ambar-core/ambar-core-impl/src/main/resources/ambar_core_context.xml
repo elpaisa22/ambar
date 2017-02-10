@@ -10,6 +10,20 @@
     http://www.springframework.org/schema/aop/spring-aop-3.0.xsd"
 	default-lazy-init="true">
 
+	<!-- Configuración de parametros de la aplicacion -->
+    <bean id="paramProperties"
+	      class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+	  <property name="locations">
+	    <list>
+	      <value>classpath*:parameters.properties</value>
+	    </list>
+	  </property>
+	</bean>
+
+	<bean id="parameters" class="org.ambar.core.parameters.impl.ParameterHelperImpl">
+		<property name="paramProperties" ref="paramProperties"/>
+	</bean>
+
 	<!-- cross services -->
 	<bean id="serviceLocator" class="org.ambar.core.commons.servicelocator.impl.ServiceLocatorImpl"/>
 
