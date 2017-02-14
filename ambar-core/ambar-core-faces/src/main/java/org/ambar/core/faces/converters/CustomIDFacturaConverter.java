@@ -25,7 +25,7 @@ public class CustomIDFacturaConverter implements Serializable, Converter {
 
 	@Override
 	public Object getAsObject(FacesContext pContext, UIComponent pComponent, String pValue) {
-		if (pValue != null) {
+		if (pValue != null && !pValue.equals("")) {
 			return Long.parseLong(pValue.replace("-", ""));
 		}
 		return null;
