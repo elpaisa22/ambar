@@ -182,7 +182,7 @@ public class AmbarDataTableRenderer extends DataTableRenderer {
         }
         
         if(selectionMode != null && selectionMode.equalsIgnoreCase("multiple")) {
-            encodeCheckbox(context, table, false, false, HTML.CHECKBOX_ALL_CLASS);
+            encodeCheckbox(context, table, false, false, HTML.CHECKBOX_ALL_CLASS, true);
         }
         
         writer.endElement("th");
