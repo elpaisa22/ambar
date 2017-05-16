@@ -36,4 +36,14 @@ public class ParameterHelperImpl implements ParameterHelper {
 		}
 	}
 
+	@Override
+	public String getDirectory(String pProperty, String pDefaultValue) {
+		if (paramProperties.containsKey(pProperty)) {
+			String value = paramProperties.getProperty(pProperty);
+			return value;
+		} else {
+			return pDefaultValue;
+		}
+	}
+
 }

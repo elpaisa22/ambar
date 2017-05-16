@@ -19,4 +19,10 @@ public interface ParameterHelper {
 	 * @return {@link Boolean} Resultado
 	 * */
 	public boolean getBoolean(String pProperty, boolean pDefaultValue);
+	
+	/**
+	 * Verifica si existe la propiedad pProperty y la retorna como un directorio.
+	 * @return {@link Boolean} Resultado
+	 * */
+	public String getDirectory(String pProperty, String pDefaultValue);
 }
