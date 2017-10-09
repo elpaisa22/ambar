@@ -162,7 +162,7 @@ public abstract class DataDAOImpl<T, E extends Persistible<T>> implements DataDA
             StringBuilder qryCount =
             	new StringBuilder(this.getQueryCountHeader());
 			qryCount.append(" ");
-			qryCount.append(pQueryPredicate.getQueryCondition());
+			qryCount.append(pQueryPredicate.getQueryCountCondition());
 
             Query queryCount = this.entityManager.createQuery(qryCount.toString());
 

@@ -152,6 +152,16 @@ public class QueryPredicate {
 
         return queryCondition.toString();
     }
+    
+    /**
+     * @return Retorna el valor del atributo queryCountCondition.
+     */
+    public String getQueryCountCondition() {
+        final StringBuilder queryCondition = new StringBuilder();
+        queryCondition.append(this.whereClause);
+
+        return queryCondition.toString();
+    }
 
     /**
      * @return Retorna el valor del atributo params.
