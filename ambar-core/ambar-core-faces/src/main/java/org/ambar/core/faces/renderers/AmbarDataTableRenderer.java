@@ -25,9 +25,11 @@ import org.primefaces.util.HTML;
  * Custom Renderer de la grilla principal.
  * </p>
  *
+ * @deprecated Al parecer el error esta solucionado en la nueva version de Primefaces 6.2
  * @author Sebastian
  *
  */
+@Deprecated
 public class AmbarDataTableRenderer extends DataTableRenderer {
 
 
